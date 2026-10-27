@@ -1,0 +1,35 @@
+﻿@model SchoolAppCoreMVC.Models.CourseViewModel
+
+@{
+    ViewData["Title"] = "Student Report";
+}
+
+<h2>Student Report</h2>
+
+<form method="post" asp-controller="Report" asp-action="Generate">
+    <div class="form-group">
+        <label asp-for="SelectedCourseID">Select Course:</label>
+
+        <select asp-for="SelectedCourseID"
+                asp-items="Model.Courses"
+                class="form-control">
+            <option value="">-- Select a course --</option>
+        </select>
+    </div>
+
+    <br />
+
+    <button type="submit"
+            name="actionType"
+            value="preview"
+            class="btn btn-primary">
+        Print Preview
+    </button>
+
+    <button type="submit"
+            name="actionType"
+            value="export"
+            class="btn btn-secondary">
+        Export to PDF
+    </button>
+</form>
